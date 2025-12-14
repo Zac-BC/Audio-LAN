@@ -1,5 +1,6 @@
 # Audio-LAN
-AudioLink is a mobile application designed to enable real-time audio streaming over a local network, using mobile devices as both sound sources and receivers. The application is based on a clearly defined role model—Master and Dependent—which allows one or more devices to act as remote microphones, while another serves as the central audio receiver
+
+AudioLink es una aplicación móvil diseñada para permitir la transmisión de audio en tiempo real a través de una red local, utilizando dispositivos móviles como fuentes y receptores de sonido. La aplicación se basa en un modelo de roles claramente definido (Maestro y Dependiente), que permite que uno o más dispositivos actúen como micrófonos remotos, mientras que otro actúa como receptor de audio central.
 
 El objetivo principal de AudioLink es ofrecer una solución simple, eficiente y de baja latencia para la captura y reproducción de audio sin necesidad de hardware adicional, cables o conexiones a internet, aprovechando únicamente la conectividad local (Wi-Fi).
 
