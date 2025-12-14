@@ -75,8 +75,8 @@ La aplicación está organizada en una arquitectura clara y modular, separando r
 - Visualización del estado de la red Wi-Fi.
 - Indicador visual del audio recibido.
 - Lista de dispositivos conectados con:
-- - Nombre del dispositivo
-- - Dirección IP
-- - Latencia estimada
-- - Estado de conexión
+    - Nombre del dispositivo
+    - Dirección IP
+    - Latencia estimada
+    - Estado de conexión
 - Controles para habilitar o deshabilitar la recepción de audio por dispositivo.
