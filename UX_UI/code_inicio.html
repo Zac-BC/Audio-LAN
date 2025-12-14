@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AudioLink - Pantalla de Inicio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between p-5 pb-2">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 p-2">
+<span class="material-symbols-outlined text-primary text-[28px]">graphic_eq</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">AudioLink</h1>
+</div>
+<!-- Simple status indicator -->
+<div class="flex items-center gap-2 rounded-full bg-background-dark/5 dark:bg-white/10 px-3 py-1">
+<div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-medium opacity-70">En línea</span>
+</div>
+</header>
+<!-- Hero Text -->
+<div class="flex flex-col items-center px-6 pt-8 pb-6 text-center">
+<h2 class="text-[28px] font-bold leading-tight tracking-tight mb-3">Selecciona tu rol</h2>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal max-w-sm">
+                Transmite audio desde un dispositivo dependiente a uno maestro a través de tu red local.
+            </p>
+</div>
+<!-- Main Action Cards -->
+<main class="flex-1 px-4 pb-8 flex flex-col gap-6 max-w-md mx-auto w-full">
+<!-- Card: Master Mode -->
+<div class="@container">
+<div class="flex flex-col overflow-hidden rounded-xl shadow-sm bg-white dark:bg-[#1c1f27] border border-slate-200 dark:border-slate-800 transition-transform active:scale-[0.99]">
+<div class="relative w-full h-40 bg-cover bg-center" data-alt="abstract dark sound waves visualizing audio reception" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsMIE4QfAIz6DaU32u2qqk3BYPV4GL8p0LsOMMaodrtHnWikO802cD8MC-ps8tG_tFZhTuXxjDxbQQjnaMz1mfsyRSqWYW2IbIHZRsOuETcatoH3QVejflvXnH60_c9xE2_e73lyWstdnkIODyfUSsaRhhciGLvSaGRfcG1CVWvtk6Z8G7_upBpHvm_CgZjkS97wOX88HcQC3sNUMsunj9RLzv4HOv3eUEK5PGCfiQLnZXMu7tcBYzneycSkhSNrBlgHqSfS5xS20');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<span class="material-symbols-outlined text-3xl mb-1">headphones</span>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-3">
+<div>
+<h3 class="text-lg font-bold leading-tight tracking-tight mb-1">Modo Maestro</h3>
+<p class="text-slate-500 dark:text-[#9da6b9] text-sm leading-relaxed">
+                                Convierte este dispositivo en el receptor. Escucha el audio de otros dispositivos.
+                            </p>
+</div>
+<div class="pt-2">
+<button class="w-full cursor-pointer flex items-center justify-center rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-medium transition-colors">
+                                Seleccionar Maestro
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card: Dependent Mode -->
+<div class="@container">
+<div class="flex flex-col overflow-hidden rounded-xl shadow-sm bg-white dark:bg-[#1c1f27] border border-slate-200 dark:border-slate-800 transition-transform active:scale-[0.99]">
+<div class="relative w-full h-40 bg-cover bg-center" data-alt="minimalist microphone icon pattern representing broadcasting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApyFk9lqo1CRH5Qzf3blnlDSxGfdLVl5xw_EUcjmfvnqJI7U9GYP4USbCzy_jczr5Q8K3ZlWA3fbY6bpQVoBH1PiBjEjoRV4aOkIiEb6i6iCq1OeDS4qY53dAXXU_CRx35zB85lctmM3D8CAr9QWeuJ58d6hZWkJa5Yu0pPamJ3Ttr7F-I0xBeY5QPT0HAeEKZoIi-UHjdMDf6NWwizorBXmHzSXDvtF_lG-HLU2dqLir2qrZtMn-u3mGCNCaGsUpiMsWfg8Gdvo0');">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<span class="material-symbols-outlined text-3xl mb-1">mic</span>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-3">
+<div>
+<h3 class="text-lg font-bold leading-tight tracking-tight mb-1">Modo Dependiente</h3>
+<p class="text-slate-500 dark:text-[#9da6b9] text-sm leading-relaxed">
+                                Usa este dispositivo como micrófono. Transmite tu audio a la red local.
+                            </p>
+</div>
+<div class="pt-2">
+<button class="w-full cursor-pointer flex items-center justify-center rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white text-sm font-medium transition-colors">
+                                Seleccionar Dependiente
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer version -->
+<div class="pb-6 text-center">
+<p class="text-xs text-slate-400 dark:text-slate-600">AudioLink v1.0.2</p>
+</div>
+</div>
+</body></html>

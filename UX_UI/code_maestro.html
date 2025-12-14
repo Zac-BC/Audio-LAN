@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modo Maestro - Transmisión de Audio</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2230",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    boxShadow: {
+                         'glow': '0 0 20px -5px rgba(19, 91, 236, 0.5)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col pb-24 overflow-y-auto no-scrollbar">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-20 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 border-b border-transparent dark:border-slate-800/50">
+<div class="w-10"></div> <!-- Spacer for balance -->
+<h2 class="text-base font-bold leading-tight tracking-wide text-center uppercase text-slate-800 dark:text-slate-100">Modo Maestro</h2>
+<div class="w-10 flex justify-end">
+<button class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">settings</span>
+</button>
+</div>
+</div>
+<!-- Network Status Chip -->
+<div class="mt-4 flex justify-center w-full px-4">
+<div class="flex h-9 items-center justify-center gap-x-2 rounded-full bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-700 px-4 shadow-sm">
+<span class="material-symbols-outlined text-green-500" style="font-size: 18px;">wifi</span>
+<p class="text-slate-700 dark:text-slate-200 text-xs font-semibold tracking-wide">Wi-Fi Casa: 5GHz</p>
+<div class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse ml-1"></div>
+</div>
+</div>
+<!-- Main Visualizer Area -->
+<div class="flex flex-col items-center justify-center py-10 gap-8 min-h-[320px]">
+<!-- Audio Waves Visualizer -->
+<div class="flex items-center justify-center gap-1.5 h-24 w-full px-8">
+<div class="w-1.5 bg-primary/30 rounded-full h-8"></div>
+<div class="w-1.5 bg-primary/50 rounded-full h-12"></div>
+<div class="w-1.5 bg-primary/80 rounded-full h-16"></div>
+<div class="w-1.5 bg-primary rounded-full h-20 shadow-glow"></div>
+<div class="w-1.5 bg-primary rounded-full h-14"></div>
+<div class="w-1.5 bg-primary/80 rounded-full h-24 shadow-glow"></div>
+<div class="w-1.5 bg-primary rounded-full h-18"></div>
+<div class="w-1.5 bg-primary/90 rounded-full h-12"></div>
+<div class="w-1.5 bg-primary/60 rounded-full h-16"></div>
+<div class="w-1.5 bg-primary/40 rounded-full h-10"></div>
+<div class="w-1.5 bg-primary/20 rounded-full h-6"></div>
+</div>
+<!-- Play/Stop Button -->
+<div class="flex flex-col items-center gap-4 z-10">
+<button class="group relative flex items-center justify-center h-24 w-24 rounded-full bg-primary text-white shadow-[0_0_40px_-5px_rgba(19,91,236,0.6)] hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all duration-300">
+<div class="absolute inset-0 rounded-full border border-white/10"></div>
+<!-- Icon switches based on state, showing Stop for 'active' state -->
+<span class="material-symbols-outlined filled" style="font-size: 48px; font-variation-settings: 'FILL' 1;">stop</span>
+</button>
+<div class="flex flex-col items-center">
+<p class="text-primary font-bold tracking-widest text-xs uppercase mb-1">Transmitiendo</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px]">00:12:45</p>
+</div>
+</div>
+</div>
+<!-- Connected Devices List -->
+<div class="flex-1 w-full px-5">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Dispositivos Conectados</h3>
+<span class="text-[10px] font-medium text-slate-400 bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded-md">3 Activos</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Device Item 1 -->
+<div class="flex items-center justify-between bg-surface-light dark:bg-surface-dark p-3 pr-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="flex items-center justify-center h-10 w-10 rounded-xl bg-blue-50 dark:bg-slate-800 shrink-0 text-primary dark:text-blue-400">
+<span class="material-symbols-outlined" style="font-size: 22px;">phone_iphone</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">iPhone de Juan</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">192.168.1.12</span>
+<span class="text-[10px] text-green-500 bg-green-500/10 px-1.5 rounded-sm font-medium">12ms</span>
+</div>
+</div>
+</div>
+<!-- Toggle Switch -->
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Device Item 2 -->
+<div class="flex items-center justify-between bg-surface-light dark:bg-surface-dark p-3 pr-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="flex items-center justify-center h-10 w-10 rounded-xl bg-blue-50 dark:bg-slate-800 shrink-0 text-primary dark:text-blue-400">
+<span class="material-symbols-outlined" style="font-size: 22px;">tablet_mac</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">iPad Sala</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">192.168.1.15</span>
+<span class="text-[10px] text-green-500 bg-green-500/10 px-1.5 rounded-sm font-medium">8ms</span>
+</div>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Device Item 3 (Inactive example) -->
+<div class="flex items-center justify-between bg-surface-light dark:bg-surface-dark p-3 pr-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm opacity-60">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="flex items-center justify-center h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-700 shrink-0 text-slate-400">
+<span class="material-symbols-outlined" style="font-size: 22px;">phone_android</span>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Android Invitado</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Desconectado</span>
+</div>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 w-full bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 z-50">
+<div class="flex justify-around items-center px-2 pb-5 pt-2">
+<!-- Nav Item 1: Inicio -->
+<button class="flex flex-col items-center gap-1 p-2 w-20 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</button>
+<!-- Nav Item 2: Maestro (Active) -->
+<button class="flex flex-col items-center gap-1 p-2 w-20 rounded-xl text-primary transition-colors">
+<div class="relative">
+<span class="material-symbols-outlined filled" style="font-size: 24px; font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</div>
+<span class="text-[10px] font-bold">Maestro</span>
+</button>
+<!-- Nav Item 3: Dependiente -->
+<button class="flex flex-col items-center gap-1 p-2 w-20 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">speaker_group</span>
+<span class="text-[10px] font-medium">Dependiente</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
